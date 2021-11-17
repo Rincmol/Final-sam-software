@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Cash Sale</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="updatecash/{{ csh.id }}" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Invoice Number</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="invoice_number" value="{{ csh.invoice_number }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Date</label>
+                                    <input type="text" style="border-radius:12px;width: 8.4cm;" class="form-control" id="validationCustom02" name="date" value="{{ csh.date }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Internal Ref. No.</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="internal_ref_no" value="{{ csh.internal_ref_no }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Cash/Cheque</label>
+                                    <input type="text" style="border-radius:12px;width: 7cm;" class="form-control" id="validationCustom02" name="cash" value="{{ csh.cash }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">User ID</label>
+                                    <input type="text" style="border-radius:12px;width: 9.5cm;" class="form-control" id="validationCustom02" name="user_id" value="{{ csh.user_id }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Account</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="account" value="{{ csh.account }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Customer ID</label>
+                                    <input type="text" style="border-radius:12px;width: 12cm;" class="form-control" id="validationCustom02" name="customer_id" value="{{ csh.customer_id }}" required style="background-color: lightgray;color: black;">
+                                        <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Customer Name</label>
+                                    <input type="text" style="border-radius:12px;width: 11.5cm;" class="form-control" id="validationCustom02" name="customer_name" value="{{ csh.customer_name }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                            </div><br>
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered table-hover" id="tab_logic">
+                                        <thead>
+                                        <tr>
+                                            <th style="border-radius:12px;width: 1cm;" class="text-center"></th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Item ID </th>
+                                            <th style="border-radius:12px;width: 4cm;" class="text-center">Item Details</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Price-1 </th>
+                                            <th style="border-radius:12px;width: 3cm;" class="text-center"> Quantity </th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Price-2 </th>
+                                            <th style="border-radius:12px;width: 3cm;" class="text-center"> Quantity </th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Amount </th>
+                                            <th style="border-radius:12px;width: 4cm;" class="text-center"> Sales Executive </th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> JOB </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr id='addr0'>
+                                            <td></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="item_id1" value="{{ csh.item_id1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="item_details1" value="{{ csh.item_details1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price1_1" value="{{ csh.price1_1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity1" value="{{ csh.quantity1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price2_1" value="{{ csh.price2_1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity3" value="{{ csh.quantity3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="amount1" value="{{ csh.amount1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="sales_ex1" value="{{ csh.sales_ex1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="job1" value="{{ csh.job1 }}" class="form-control"/></td>
+                                        </tr>
+                                        <tr id='addr0'>
+                                            <td></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="item_id2" value="{{ csh.item_id2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="item_details2" value="{{ csh.item_details2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price1_2" value="{{ csh.price1_2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity2" value="{{ csh.quantity2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price2_2" value="{{ csh.price2_2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity4" value="{{ csh.quantity4 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="amount2" value="{{ csh.amount2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="sales_ex2" value="{{ csh.sales_ex2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="job2" value="{{ csh.job2 }}" class="form-control"/></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><br><br>
+                            <!--End-Table-->
+
+
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Labour Charge</label>
+                                    <input type="text" style="border-radius:12px;width: 8.5cm;" class="form-control" id="validationCustom02" name="labour_charge" value="{{ csh.labour_charge }}" required style="background-color: lightgray;color: black;">
+
+
+                                    <label for="validationCustom02">Other Charge</label>
+                                    <input type="text" style="border-radius:12px;width: 8.5cm;" class="form-control" id="validationCustom02" name="other_charge" value="{{ csh.other_charge }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="total1" value="{{ csh.total1 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total2" value="{{ csh.total2 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Discount</label>
+                                    <input type="text" style="border-radius:12px;width: 20.7cm;" class="form-control" id="validationCustom02" name="discount" value="{{ csh.discount }}" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="total3" value="{{ csh.total3 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total4" value="{{ csh.total4 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Tax</label>
+                                    <input type="text" style="border-radius:12px;width: 21.3cm;" class="form-control" id="validationCustom02" name="tax" value="{{ csh.tax }}" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 5.8cm;" class="form-control" id="validationCustom02" name="total5" value="{{ csh.total5 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total6" value="{{ csh.total6 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                            </div><br>
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="text-block1">
+                                <div class="form-row">
+                                    <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Trial Balance</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="gotrialbalance" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row">
+
+                            <div class="row">
+                                <div class="col">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <label for="validationCustom02"> From Date</label>
+                                <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="from_date" required style="background-color: lightgray;color: black;">
+                                <label for="validationCustom02">To Date</label>
+                                <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="to_date" required style="background-color: lightgray;color: black;">
+                                </div>
+                            </div><br>
+
+
+
+                            </div><br>
+                             <div class="row">
+                                <div class="text-block1">
+                                    <div class="form-row">
+                                        <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                    </div>
+                                </div>
+                            </div><br><br>
+
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table border=1 align="center" class="table table-bordered table-hover" id="tab_logic">
+                                        <thead>
+                                        
+                                            <tr>
+                                            
+                                            <th style="border-radius:12px;width: 5cm;" class="text-center">Ledger Name</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Opening Balance</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Debit Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Credit Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Closing Balance</th>
+                                        </tr>    
+                                        
+                                        </thead>
+                                        <tbody>
+              
+                                            
+                                              {% for demoac in demoac  %}  
+                                              <tr>
+                                              <td>{{demoac.account}} <br> {{demoac.ledger_name}}</td>
+                                              <td></td>
+                                              <td>{{demoac.cash}} </td>
+                                              <td><br> {{demoac.cash}}</td>
+                                              <td></td>
+                                             
+                                            </tr>
+                                            {% endfor %}
+                                           
+                                            
+                                            
+                                            
+                                </tbody>
+                                </table>
+                                <br>
+                                <br>
+                                
+
+                                    <!--    <tbody>
+                                        <tr>
+                                           
+                                            <td> {%for cash_sale in cash_sale%}
+                                                <td>{{cash_sale.cash}} </td>
+                                                {%endfor%}
+                                               
+                                               
+                                                {%for pcash in pcash%}
+                                                
+                                               
+                                                <td>{{pcash.account}}</td>
+                                               <td></td>
+                                                <td>{{closing_balance}} </td> </td>
+                                               
+                                              <td></td>
+                                              {%endfor%}
+                                              <!-- <td>{{c}}</td>  
+                                                    <td></td>  
+                                              {%for  r in r %}
+                                                   
+                                                <tr> <td></td><td>{{r.ledger_name}}</td>
+                                                    <td>{{r.opening_bal}}</td>
+                                                      
+                                                
+                                                  
+                                                         
+                                                        
+                                                          
+                                                                  
+                                                {% endfor %}</td>
+                                              
+                                            
+                                             
+                                             <td></td>
+                                                <td>{{closing_balance}} </td>
+                                               
+                                                
+                                                    
+                                                <td>{{c}}<br>(cr)</td>
+                                             
+                                              
+                                                   
+                                               </td>
+                                               
+                                        </tr>
+                                        <tr><td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                       
+                                       
+                            <!--End-Table-->
+
+
+
+                        <script>
+                        $(document).ready(function(){
+
+$('#tab_logic tbody').on('keyup change',function(){
+   calc();
+});
+$('#tax').on('keyup change',function(){
+   calc_total();
+});
+
+
+});
+
+function calc()
+{
+$('#tab_logic tbody tr').each(function(i, element) {
+   var html = $(this).html();
+   if(html!='')
+   {
+      var opening_bal = $(this).find('.opening_bal').val();
+      var cash = $(this).find('.cash').val();
+      $(this).find('.total').val(opening_bal+cash);
+
+      calc_total();
+   }
+ });
+}
+
+function calc_total()
+{
+total=0;
+$('.total').each(function() {
+     total += parseInt($(this).val());
+ });
+
+
+$('#totalamount').val((total_d).toFixed(2));
+}
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

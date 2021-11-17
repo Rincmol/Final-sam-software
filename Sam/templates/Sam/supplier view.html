@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+</head>
+<body>
+<body style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h2 style="text-align: center">View Deatails</h2></center>
+                            </div>
+                            <table border="1" class="table table-bordered" input align="center">
+
+                                <thead class="alert-warning">
+                                <tr>
+                                    <th>Customer name</th>
+                                    <th>Vat Reg No.</th>
+                                    <th>CR No</th>
+                                    <th>Erpired On</th>
+                                    <th>Land Phone No</th>
+                                    <th>Mob No</th>
+                                    <th>Email Id</th>
+                                    <th>Address</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for supp2 in supp %}
+                                    <tr>
+                                        <td>{{ supp2.customer_name }}</td>
+                                        <td>{{ supp2.vat_reg_no }}</td>
+                                        <td>{{ supp2.cr_no }}</td>
+                                        <td>{{ supp2.expired_on }}</td>
+                                        <td>{{ supp2.land_phone }}</td>
+                                        <td>{{ supp2.mobile }}</td>
+                                        <td>{{ supp2.email }}</td>
+                                        <td>{{ supp2.address }}</td>
+                                        <td><center><a class="btn btn-sm btn-warning" href="editsupp/{{ supp2.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="deletesupp/{{ supp2.id }}"><span class="glyphicon glyphicon-trash"></span>Delete</a> </center></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+				</div>
+
+
+
+
+</body>
+</html>

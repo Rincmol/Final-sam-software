@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+  bottom: 225px;
+  right: 510px;
+
+}
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Cash Purchase</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="text-block1">
+                        <a href="gopcashsale"><button style="align-items: center;border-radius: 12px;">ADD CASH PURCHASE</button></a><br><br>
+                    </div>
+                    <div>
+                        <table border="1" class="table table-bordered" input align="center">
+
+                                <thead class="alert-warning">
+                                <tr>
+                                    <th>Invoice Number</th>
+                                    <th>User ID</th>
+                                    <th>Supplier ID</th>
+                                    <th>Supplier Name</th>
+                                    <th>Item ID</th>
+                                    <th>Item Details</th>
+                                    <th>Labour Charge</th>
+                                    <th>Discount</th>
+                                    <th>Tax</th>
+                                    <th>Total</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for csh1 in csh %}
+                                    <tr>
+                                        <td>{{ csh1.invoice_number }}</td>
+                                        <td>{{ csh1.user_id }}</td>
+                                        <td>{{ csh1.supp_id }}</td>
+                                        <td>{{ csh1.supp_name }}</td>
+                                        <td>{{ csh1.item_id1 }}</td>
+                                        <td>{{ csh1.item_details1 }}</td>
+                                        <td>{{ csh1.labour_charge }}</td>
+                                        <td>{{ csh1.discount }}</td>
+                                        <td>{{ csh1.tax }}</td>
+                                        <td>{{ csh1.total6 }}</td>
+                                        <td><center><a class="btn btn-sm btn-warning" href="editpcash/{{ csh1.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="deletepcash/{{ csh1.id }}"><span class="glyphicon glyphicon-trash"></span>Delete</a> </center></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                        </table><br>
+                    </div>
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

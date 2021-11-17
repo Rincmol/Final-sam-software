@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+</head>
+<body>
+<body style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h2 style="text-align: center">View Deatails</h2></center>
+                            </div>
+                            <table border="1" class="table table-bordered" input align="center">
+
+                                <thead class="alert-warning">
+                                <tr>
+                                    <th>Job name</th>
+                                    <th>Job Drecription</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for job in jobview %}
+                                    <tr>
+                                        <td>{{ job.job_name }}</td>
+                                        <td>{{ job.job_desc }}</td>
+                                        <td><center><a class="btn btn-sm btn-warning" href="editjob/{{ job.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="deletejob/{{ job.id }}"><span class="glyphicon glyphicon-trash"></span>Delete</a> </center></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+				</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+     /* Automatic Serial Number Row */
+.css-serial {
+ counter-reset: serial-number; /* Set the serial number counter to 0 */
+}
+.css-serial td:first-child:before {
+ counter-increment: serial-number; /* Increment the serial number counter */
+ content: counter(serial-number); /* Display the counter */
+}
+
+
+.col-sm-4{
+  padding-right: 3px;
+  padding-left: 3px;
+}
+.col-sm-2{
+padding-right: 2px;
+padding-left: 14px;
+}
+.col-sm-3{
+  padding-right: 3px;
+  padding-left: 3px;
+}
+.col-sm-5{
+padding-right: 3px;
+padding-left: 3px;
+}
+.col-sm-7{
+padding-right: 3px;
+padding-left: 3px;
+}
+
+.col-6{
+  padding-right: 3px;
+  padding-left: 3px;
+}
+.col{
+  padding-right: 3px;
+  padding-left: 3px;
+}
+.btn{
+  background-color: #808F9C;
+}
+
+
+.col-sm-10{
+max-width: 95%;
+
+}
+
+  .col-sm-13{
+    max-width: 95%;
+}
+
+
+.form-control{
+  background-color: #B0BCD7;
+height: 45px;
+margin-bottom: 3px;
+}
+
+
+
+.row{
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Ledger Statement</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="goledgerstmt" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row">
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02"> From Date</label>
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="from_date" required style="background-color: lightgray;color: black;">
+                                    <label for="validationCustom02">To Date</label>
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="to_date" required style="background-color: lightgray;color: black;">
+                                    <label for="validationCustom02">Ledger name</label>
+                                    <select  style="border-radius:12px;width: 8cm;" class="custom-select" name="ldg_nam" required style="background-color: lightgray;color: black;">
+                                     
+
+                                      <option selected disabled value="">Choose...</option>
+                                      <option>Assets </option>
+                                      <option>Rent </option>
+                                      <option>Bank Accounts </option>
+                                      <option>Cash-in-hand</option>
+                                      <option>Cash Ledger</option>
+                                      <option>Purchase Accounts</option>
+                                      <option>Customer ledger</option> 
+                                      <option>sales Ledger</option>
+                                      <option>Supplier-ledger</option>
+                                      <option>sales Accounts</option> 
+                                      <option>Supplier-ledger</option>
+                                      <option>Loans & Advances(Assets)</option>
+                                      <option>Stock-in-Hand</option>
+                                      <option>Sundry Debtors</option>
+                                      <option>Fixed Asset</option>
+                                      <option>Investments</option>
+                                      <option>Misc. Expenses(ASSET)</option>
+                                      <option>Liabilities</option>
+                                      <option>Branch\Divisions</option>
+                                      <option>Capital Account</option>
+                                      <option>Reserves & Surplus</option>
+                                      <option>Current Liabilities</option>
+                                      <option>Duties & Taxes</option>
+                                      <option>Provisions</option>
+                                      <option>Sundry Creditors</option>
+                                      <option>Loans (Liabilities)</option>
+                                      <option>Bank OD A/c</option>
+                                      <option>Secured A/c</option>
+                                      <option>Profit & loss A/c</option>
+                                      <option>Direct Expenses</option>
+                                      <option>Indirect Expenses</option>
+                                      <option>Direct Income</option>
+                                      <option>Indirect Income</option>
+                                      
+                                  </select>  
+                                  </div>
+                                </div><br>
+
+                                
+                               
+
+                                <!-- <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Ledger Name</label>
+                                    <select  style="border-radius:12px;width: 8cm;" class="custom-select" name="ledger_name" required style="background-color: lightgray;color: black;">
+
+                                      <option selected disabled value="">    Choose      </option> 
+                                     
+                                      {%for cat in category%}
+                                     
+                          
+                          
+                                     
+                                        {% for grp in groups%}
+                                          {%if cat.id == grp.id%}
+                                        <option> {{grp.group_name}}</option>
+                                           
+                                             
+                                                {% for ledger in ledgers%}
+                                                  {%if grp.id == ledger.group_id%}
+                                                 <option> {{ledger.ledger_name}}</option>
+                                                      
+                                         
+                                                  
+                                                          {% for subLedger in subLedgers%}
+                                                            {%if ledger.id == subLedger.parent_id%}
+                                                           <option>{{subLedger.ledger_name}}          </option> 
+                                                               
+                                                            
+                                                           
+                                                            
+                                                                {%endif%}
+                                                          {% endfor %}
+                                                          {%endif%}
+                                                          {% endfor %}
+                                                          {%endif%}           
+                                          {% endfor %}
+                                          {% endfor %}
+                                                          
+                                           
+                              
+                                        </select>
+                                 
+
+
+                                    </div>
+                                </div><br> -->
+
+                            </div><br>
+                             <div class="row">
+                                <div class="text-block1">
+                                    <div class="form-row">
+                                        <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                    </div>
+                                </div>
+                            </div><br><br>
+
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table border = 1    class="table table-bordered" class="css-serial">
+            <thead>
+              <tr>
+                <th>SI.no</th>
+                <th>Ledger ID</th>
+                <th>Ledger Name</th>
+                <th>Ledger Category</th>
+                <th>Opening Balance</th>
+                <th>Debit Amount</th>
+                <th>Credit Amount</th>
+                <th>Closing Balance</th>
+              </tr>
+            </thead> 
+            <!-- <tbody>
+              <tr>
+                
+                                     
+                          
+                          
+                                     
+                  
+                     
+                       
+                        
+                   <td></td> 
+                        
+                          
+                         
+                        
+                <td> {%for cash_sale in cash_sale%}
+                  <td>{{cash_sale.cash}} </td>
+                  {%endfor%}
+                 
+                 
+                  {%for pcash in pcash%}
+                  <td>{{pcash.account}}</td>
+                 
+                  <td></td>
+                  <td></td>
+                  <td>{{pcash.total5}} </td> </td>
+                <td></td>
+                {%endfor%}
+                <td></td>  
+                      <td></td>  
+                </td>
+                 <tr>
+                <td>{% for r in r %}
+                     <td></td>
+                  <td>{{r.ledger_name}}</td>
+                  {% for grp in groups%}
+
+                  <td>
+                    {{grp.group_name}}</td>
+                    
+                    {%endfor%}
+                  <td>{{r.opening_bal}}</td>
+                        
+                  {%for pcash in pcash%}
+                 
+                 
+                  
+                  <td></td>
+                  <td>{{pcash.total5}} </td> </td>
+                <td></td>
+                {%endfor%}
+                    
+                           
+                          
+                            
+                                    
+                  {% endfor %}</td> 
+              </tr>
+              <tr><td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td></tr>
+            
+              
+
+            </tbody> -->
+
+
+            <tbody>
+              
+              {% if PCash.account == nm %}
+                {% for demoac in demoac  %}  
+                <tr>
+                <td></td>
+                <td></td>
+                <td>{{demoac.account}} </td>
+                <td></td>
+                <td></td>
+                <td>{{demoac.cash}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              {% endfor %}
+             
+              {% endif%} 
+               {% if DemoPCash.ledger_name == nm %}
+               
+               {% for demol in demol  %}
+              <tr>
+                <td></td>
+                <td></td>
+                <td>{{demol.ledger_name}} </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>{{demol.cash}}</td>
+                <td></td>
+             
+                </tr>
+                {% endfor %}
+                {% endif%} 
+              
+
+<!--               
+              </tbody>
+
+
+              {% for demol  in demol   %}  
+              {% if demol.nm == DemoPCash.account %}   
+              <tr>
+               
+               
+              <td>&nbsp;</td>
+              <td></td>   
+                     
+              <td>{{demol.account}}</td>
+              {% elif demol.nm == DemoPCash.ledger_name %}
+              
+              
+              <td>{{demol.ledger_name}}</td>  
+              <td></td>
+              <td></td>
+              <td>{{demol.cash}}</td>
+              <td></td>
+              <td></td>
+              
+              
+              
+             
+              </tr>
+             
+             
+              
+              
+              
+             
+              {% endif %}
+             
+              {% endfor %}
+             
+
+            </tbody> -->
+
+
+
+<!-- 
+
+             <tbody>
+              
+              {% for demoacc  in demoacc %}  
+             
+              {% if   DemoPCash.account in nm %}
+              
+              <tr>                               
+                <td>&nbsp;</td>
+                <td></td>
+                
+                <td>{{ demoacc.account  }} </td>
+                
+                
+                <td></td>
+                <td></td>
+               
+                <td></td>
+                <td> {{ demoacc.cash }} </td>
+               
+                <td></td>
+               
+            
+            
+            
+
+             {% elif  DemoPCash.ledger_name in nm   %}
+                                          
+              <td>&nbsp;</td>
+              <td></td>
+              
+              <td>{{ demoacc.ledger_name  }} </td>
+             
+              
+              
+              <td></td>
+              <td></td>
+             
+              <td>{{ demoacc.cash  }}</td>
+             <td></td>
+              <td></td>
+             
+           </tr>
+           {% endif %} 
+           {% endfor %}
+                
+
+             
+             
+            </tbody> -->
+
+          </table>
+                                </div> 
+
+                            </div><br><br>
+                            <!--End-Table-->  
+
+                       <!--    <div class="css-serial" class="grid-container" style="margin-bottom: 50px;" >
+                            <--! Control the column width, and how they should appear on different devices 
+                              <div class="row">
+                              <div> <div class="col-sm-10" style="background-color:#B0BCD7; width: 80px;border-radius: 7px;">SI.no</div></div>
+                              <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 120px;border-radius: 7px;">Ledger ID</div> </div>
+                              <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 180px;border-radius: 7px;">Ledger Name</div></div>
+                              <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 155px;border-radius: 7px;">Ledger Category</div></div>
+                              <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 158px;border-radius: 7px;">Opening Balance</div></div>
+                              <div><div class="col-sm-10" style="background-color:#B0BCD7;width: 140px;border-radius: 7px;">Debit Amount</div></div>
+                              <div><div class="col-sm-10" style="background-color:#B0BCD7;width: 150px;border-radius: 7px;">Credit Amount</div></div>
+                              <div><div class="col-sm-13" style="background-color:#B0BCD7;width: 120px;border-radius: 7px;"> Closing Balance</div></div>
+                              
+                              </div>
+                    
+                              <div class="row" style="padding-top: 5px;">
+                                 
+                               
+                                <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 80px;border-radius: 7px;"></div></div>
+                                <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 120px;border-radius: 7px;"></div></div>
+                                <div> {% for demo in demo %}   <div class="col-sm-10" style="background-color:#B0BCD7;width: 180px;border-radius: 7px;">  {{ demo.account }}  </div>
+                               
+
+                                <div class="col-sm-10" style="background-color:#B0BCD7;width: 180px;border-radius: 7px;">   {{demo.ledger_name}}  </div> {%endfor%}</div>
+                                <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 155px;border-radius: 7px;"></div></div>
+                                <div> <div class="col-sm-10" style="background-color:#B0BCD7;width: 158px;border-radius: 7px;"></div></div>
+                               
+                                {%if demop.id == 1 %}
+                                <div> {% for demo in demo %}<div class="col-sm-10" style="width: 140px;border-radius: 7px;">{{ demo.cash }} </div>{%endfor%}</div>
+                                <div>  {% for demo in demo %}  <div class="col-sm-10" style="width: 180px;border-radius: 7px;">     <br>  </div>
+                               <div class="col-sm-10" style="background-color:#B0BCD7;width: 180px;border-radius: 7px;">   {{ demo.cash }}   </div>{%endfor%} </div>
+
+                               {% else %}
+                               <div> {% for demo1 in demo1 %}<div class="col-sm-10" style="background-color:#B0BCD7;width: 140px;border-radius: 7px;">{{ demo1.cash }} </div>{%endfor%}</div>
+                               <div>  {% for demo1 in demo1 %}  <div class="col-sm-10" style="width: 180px;border-radius: 7px;">     <br>  </div>
+                              <div class="col-sm-10" style="background-color:#B0BCD7;width: 180px;border-radius: 7px;">   {{ demo1.cash }}   </div>{%endfor%} </div>
+                              {% endif %}
+                             
+                                <div><div class="col-sm-10" style="background-color:#B0BCD7;width: 120px;border-radius: 7px;"></div></div>
+                                
+                              </div> --> 
+
+                          
+
+
+
+
+
+
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

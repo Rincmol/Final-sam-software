@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CHART OF ACCOUNTS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<style>
+  ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg); 
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+</style>
+<body>
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <button class="submit" type="button">
+      <a  href="asset/add">Add new ledger</a>
+    </button>
+  </nav>
+  <br>
+
+ 
+  
+            
+{%for cat in category%}
+            <li>{{cat.category_name}}</li>
+
+            
+           
+              {% for grp in groups%}
+                {%if cat.id == grp.id%}
+                <span class="caret">{{grp.group_name}}</span>
+             
+                   
+                      {% for ledger in ledgers%}
+                        {%if grp.id == ledger.group_id%}
+                        <ul> <span class="caret">{{ledger.ledger_name}}</span>
+                              <a href="assetedit">Edit</a> |
+                              <a href="asset/delete/{{ ledger.id }}">Delete</a></ul>
+                            
+                              
+                   
+                                {% for subLedger in subLedgers%}
+                                  {%if ledger.id == subLedger.parent_id%}
+                                  <li><span class="caret">{{subLedger.ledger_name}}</span>
+                                      <a href="assetedit">Edit</a> |
+                                      <a href="asset/delete/{{ subLedger.id }}">Delete</a></li>
+                                  
+                                  
+                              
+                    
+                  
+                                  
+                                      {%endif%}
+                                {% endfor %}
+                                {%endif%}
+                                {% endfor %}
+                                {%endif%}           
+                {% endfor %}
+                                
+                 
+                  
+                     
+                      
+        
+                    
+                  
+                
+        
+              
+            
+        
+                   
+{% endfor %}
+    
+                                
+   
+ 
+  <script>
+    var toggler = document.getElementsByClassName("caret");
+    var i;
+    
+    for (i = 0; i < toggler.length; i++) {
+      toggler[i].addEventListener("click", function() {
+        this.parentElement.querySelector(".nested").classList.toggle("active");
+        this.classList.toggle("caret-down");
+      });
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h2 style="text-align: center">REGISTRATION</h2></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container"></div>
+                    <form action="updateledger/{{ ldg.id }}" method="post"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                <br>
+                        <div class="card radius-15" style="background-color: grey;">
+						<div class="card-body">
+                            <br>
+                            <div class="card-title">
+								<h4 style="text-align: center">Group Registration</h4>
+							</div>
+
+
+                            <div class="row">
+                                <label for="validationCustom02">Ledger name</label>
+                                <input type="text" class="form-control" id="validationCustom02" name="ledger_name" value="{{ ldg.ledger_name }}" required style="background-color: lightgray;color: black;">
+
+                            </div><br>
+                            <div class="row">
+                                <label for="validationCustom02">Group Name</label>
+                                <input type="text" class="form-control" id="validationCustom02" name="group_name" value="{{ ldg.group_name }}" required style="background-color: lightgray;color: black;">
+
+                            </div><br>
+                            <div class="row">
+                                <label for="validationCustom02">Category</label>
+                                <input type="text" class="form-control" id="validationCustom02" name="category" value="{{ ldg.category }}" required style="background-color: lightgray;color: black;">
+
+                            </div><br>
+                            <div class="row">
+                                <label for="validationCustom02">Opening Balance </label>
+                                <input type="text" class="form-control" id="validationCustom02" name="opening_bal" value="{{ ldg.opening_bal }}" required style="background-color: lightgray;color: black;">
+
+                            </div><br>
+
+
+
+
+
+
+                            </div>
+                        </div>
+                        </div>
+
+
+
+								&nbsp;
+
+
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-row">
+                                    <button class="btn btn-primary" type="submit" style="width: 100%;background-color: darkgrey">Submit form</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

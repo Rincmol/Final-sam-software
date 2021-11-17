@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script>
+$(document).ready(function(){
+
+	$('#tab_logic tbody').on('keyup change',function(){
+		calc();
+	});
+	$('#discount').on('keyup change',function(){
+		calc_total();
+	});
+
+
+
+});
+
+function calc()
+{
+	$('#tab_logic tbody tr').each(function(i, element) {
+		var html = $(this).html();
+		if(html!='')
+		{
+			var qty = $(this).find('.qty').val();
+			var price = $(this).find('.price').val();
+			$(this).find('.total').val(qty-price);
+
+			calc_total();
+		}
+    });
+}
+function calc_total() {
+    total = 0;
+    $('.total').each(function () {
+        total += parseInt($(this).val());
+    });
+    price = 0;
+    $('.price').each(function () {
+        price += parseInt($(this).val());
+    });
+    $('#total1').val(total.toFixed(2));
+    total3 = total-$('#discount').val();
+    $('#total3').val(total3.toFixed(2));
+    $('#total5').val(total3.toFixed(2));
+
+
+}
+
+
+
+</script>
+
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Receipt</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="receiptcreate" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Receipt Number</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="receipt_number" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Date</label>
+                                    <input type="date" style="border-radius:12px;width: 8.4cm;" class="form-control" id="validationCustom02" name="date" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Internal Ref. No.</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="internal_ref_no" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Due On</label>
+                                    <input type="date" style="border-radius:12px;width: 7cm;" class="form-control" id="validationCustom02" name="due_on" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">User ID</label>
+                                    <input type="text" style="border-radius:12px;width: 9.5cm;" class="form-control" id="validationCustom02" name="user_id" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Credit Limit Amount</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="credit_limit_amt" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class="col">
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <label for="validationCustom02">Account</label>
+                                        <select  style="border-radius:12px;width: 8cm;" class="custom-select" name="account" required style="background-color: lightgray;color: black;">
+
+                                            <option selected disabled value="">Choose...</option>                                       
+                                            <option>Customer Ledger</option>
+                                        </select> </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Customer ID</label>
+                                    <input type="text" style="border-radius:12px;width: 12cm;" class="form-control" id="validationCustom02" name="customer_id" required style="background-color: lightgray;color: black;">
+                                        <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Customer Name</label>
+                                    <input type="text" style="border-radius:12px;width: 11.5cm;" class="form-control" id="validationCustom02" name="customer_name" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                            </div><br>
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered table-hover" id="tab_logic">
+                                        <thead>
+                                        <tr>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">SI No</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Invoice Number</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Invoice Date</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Due Date</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Invoice Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Received Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Outstanding</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Discount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Balane Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Tick Space</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Partial</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr id='addr0'>
+                                            <td>1.</td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="invoice_no1" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="invoice_date1" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="duedate1" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="invoice_amt1" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="received_amt1" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="outstanding1" placeholder='0.00' class="form-control qty" step="0" min="0"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="discount1" placeholder='Enter Price' class="form-control price" step="0.00" min="0"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="balance_amt1" placeholder='0.00' class="form-control total" readonly/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="tick_space1" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="partial1" class="form-control"/></td>
+                                        </tr>
+                                        <tr id='addr1'>
+                                            <td>2.</td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="invoice_no2" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="invoice_date2" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="duedate2" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="invoice_amt2" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="received_amt2" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="outstanding2" placeholder='0.00' class="form-control qty" step="0" min="0"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="discount2" placeholder='Enter Price' class="form-control price" step="0.00" min="0"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="balance_amt2" placeholder='0.00' class="form-control total" readonly/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="tick_space2" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="partial2" class="form-control"/></td>
+                                        </tr>
+                                        <tr id='addr2'>
+                                            <td>3.</td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="invoice_no3" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="invoice_date3" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="duedate3" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="invoice_amt3" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="received_amt3" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="outstanding3" placeholder='0.00' class="form-control qty" step="0" min="0"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="discount3" placeholder='Enter Price' class="form-control price" step="0.00" min="0"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="balance_amt3" placeholder='0.00' class="form-control total" readonly/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="tick_space3" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="partial3" class="form-control"/></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><br><br>
+                            <!--End-Table-->
+
+
+                            <div class="row">
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total Outstanding</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" name="total1" placeholder='0.00' class="form-control" id="total1" readonly style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total2" placeholder='Enter in words' style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Discount</label>
+                                    <input type="text" style="border-radius:12px;width: 21.3cm;" name="discount" class="form-control" id="discount" placeholder="0" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Net Outstanding</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" name="total3" placeholder='0.00' class="form-control" id="total3" readonly style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total4" placeholder='Enter in words' style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">On Account</label>
+                                    <input type="text" style="border-radius:12px;width: 20.7cm;" name="on_account" class="form-control" id="on_account" placeholder="0.00 (optional)" style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 5.8cm;" name="total5" placeholder='0.00' class="form-control" id="total5" readonly style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total6" placeholder='Enter in words' style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                            </div><br>
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="text-block1">
+                                <div class="form-row">
+                                    <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

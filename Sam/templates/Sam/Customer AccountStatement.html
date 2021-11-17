@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+
+    /* Automatic Serial Number Row */
+.css-serial {
+ counter-reset: serial-number; /* Set the serial number counter to 0 */
+}
+.css-serial td:first-child:before {
+ counter-increment: serial-number; /* Increment the serial number counter */
+ content: counter(serial-number); /* Display the counter */
+}
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Customer Account Statement</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="custstmscreate" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row">
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">From Date</label>
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="to_date" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">To Period  </label>
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="from_date" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Customer ID</label>
+                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="customer_id" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Customer Name</label>
+                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="customer_name" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+
+                            </div><br>
+                             <div class="row">
+                                <div class="text-block1">
+                                    <div class="form-row">
+                                        <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                    </div>
+                                </div>
+                            </div><br><br>
+
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table border="1" class="css-serial" class="table table-bordered">
+            <thead>
+              <tr>
+              <th>Sl.no</th>
+              <th>Date</th>
+              <th>Ref No</th>
+              <th>Description</th>
+              <th>Inv amount</th>
+              <th>Receipt amount</th>
+              <th>Balance</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i  in demoac %}   
+             <tr>
+               
+              <td>&nbsp;</td> 
+               <td>{{ i.date }}</td>
+               <td>{{ i.internal_ref_no }}</td>
+               <td></td>
+               <td>{{ i.invoice_amt1 }}</td>
+               <td>{{ i.tick_space1 }}</td>
+               <td>{{ i.balance_amt1 }}</td>
+             </tr>
+             
+
+
+
+             {% endfor %}  
+           </tbody>
+          </table>
+                                </div>
+
+                            </div><br><br>
+                            <!--End-Table-->
+
+
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

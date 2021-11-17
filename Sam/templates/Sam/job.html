@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h2 style="text-align: center">REGISTRATION</h2></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container"></div>
+                    <form action="createjob" method="post"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                                <br>
+                        <div class="card radius-15" style="background-color: grey;">
+						<div class="card-body">
+                            <br>
+                            <div class="card-title">
+								<h4 style="text-align: center">Job Registration</h4>
+							</div>
+
+
+                            <div class="row">
+                                <label for="validationCustom02">Job name</label>
+                                <input type="text" class="form-control" id="validationCustom02" name="job_name" required style="background-color: lightgray;color: black;">
+
+                            </div><br>
+                            <div class="row">
+                                <label for="validationCustom02">Item Drecription</label>
+                                <input type="text" class="form-control" id="validationCustom02" name="job_desc" required style="background-color: lightgray;color: black;">
+
+                            </div><br>
+
+
+
+                            <div class="row">
+                                <label for="validationCustom02">Add Image </label><br>
+
+                                <label for="validationCustom02">Image-1 </label>
+                                <input type="file" class="form-control" id="validationCustom02" name="imag1" required style="background-color: lightgray;color: black;"><br>
+                                <label for="validationCustom02">Image-2 </label>
+                                <input type="file" class="form-control" id="validationCustom02" name="imag2" required style="background-color: lightgray;color: black;"><br>
+                                <label for="validationCustom02">Image-3 </label>
+                                <input type="file" class="form-control" id="validationCustom02" name="imag3" required style="background-color: lightgray;color: black;"><br>
+                                <label for="validationCustom02">Image-4 </label>
+                                <input type="file" class="form-control" id="validationCustom02" name="imag4" required style="background-color: lightgray;color: black;"><br>
+
+                            </div><br>
+
+
+                            </div>
+                        </div>
+                        </div>
+
+
+
+								&nbsp;
+
+
+
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-row">
+                                    <button class="btn btn-primary" type="submit" style="width: 100%;background-color: darkgrey">Submit form</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

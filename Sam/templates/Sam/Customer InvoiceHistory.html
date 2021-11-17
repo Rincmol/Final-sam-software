@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    
+    $('#tab_logic tbody').on('keyup change',function(){
+        calc();
+    });
+    $('#discount').on('keyup change',function(){
+        calc_total();
+    });
+    
+    
+    
+});
+    
+function calc()
+{
+    $('#tab_logic tbody tr').each(function(i, element) {
+        var html = $(this).html();
+        if(html!='')
+        {
+            var qty = $(this).find('.qty').val();
+                
+    
+            calc_total();
+        }
+    });
+}
+function calc_total() {
+    qty = 0;
+    $('.qty').each(function () {
+        qty += parseInt($(this).val());
+    });
+    $('#total2').val(qty.toFixed(2));
+        
+}
+    
+    
+</script>
+    
+         
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Customer Invoice History</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="custinvocreate" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row">
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Report Date</label>
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="report_date" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02"> Invoice No   </label>
+                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="invoice_no" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Customer ID</label>
+                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="customer_id" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Customer Name</label>
+                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="customer_name" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+
+                            </div><br>
+                             <div class="row">
+                                <div class="text-block1">
+                                    <div class="form-row">
+                                        <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                    </div>
+                                </div>
+                            </div><br><br>
+
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table border="1" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                              <th>Sl.no</th>
+                                              <th>Date</th>
+                                              <th>Ref No</th>
+                                              <th>Description</th>
+                                              <th>Item</th>
+                                              <th>Qty </th>
+                                              <th>Job</th>
+                                              <th>Sales Staff</th>
+                                              <th>Amount</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {% for i  in demoac %}
+                                            <tr>
+                                                <td>&nbsp;</td> 
+                                                <td><input style="border-radius:12px;" value="{{ i.date }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.internal_ref_no }}" class="form-control" readonly/></td>
+                                                <td></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.item_details1 }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.qty }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.job1 }}" class="form-control"  readonly></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.sales_ex1 }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.total }}" class="form-control qty" step="0" min="0" readonly/></td>
+                                            </tr>
+                                            {% endfor %}  
+                                            {% for i  in demoac %}
+                                            <tr>
+                                                <td>&nbsp;</td> 
+                                                <td><input style="border-radius:12px;" value="{{ i.date }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.internal_ref_no }}"class="form-control" readonly/></td>
+                                                <td></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.item_details2 }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.quantity2 }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.job2 }}" class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.sales_ex2 }}"class="form-control" readonly/></td>
+                                                <td><input style="border-radius:12px;" value="{{ i.amount2 }}" class="form-control qty" step="0.00" min="0" readonly/></td>
+                                            </tr>
+                                            {% endfor %}  
+                                           
+                                            <tr>
+                                              <td colspan="8" align="right">Balance Amount</td>
+                                              <td><input  type="text" style="border-radius:12px;" name="" class="form-control" id="total2" readonly/></td>
+                                            </tr>
+                                
+                                          </tbody>
+          </table>
+                                </div>
+
+                            </div><br><br>
+                            <!--End-Table-->
+
+
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

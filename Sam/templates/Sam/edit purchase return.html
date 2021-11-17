@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Purchase Return</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="updatepsreturn/{{ rtn.id }}" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Invoice Number</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="invoice_number" value="{{ rtn.invoice_number }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Date</label>
+                                    <input type="text" style="border-radius:12px;width: 8.4cm;" class="form-control" id="validationCustom02" name="date" value="{{ rtn.date }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Internal Ref. No.</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="internal_ref_no" value="{{ rtn.internal_ref_no }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Due On</label>
+                                    <input type="text" style="border-radius:12px;width: 7cm;" class="form-control" id="validationCustom02" name="due_on" value="{{ rtn.due_on }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+
+
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">User ID</label>
+                                    <input type="text" style="border-radius:12px;width: 9.5cm;" class="form-control" id="validationCustom02" name="user_id" value="{{ rtn.user_id }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Credit Limit Amount</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="credit_limit_amt" value="{{ rtn.credit_limit_amt }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+
+
+                                </div><br><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Supplier ID</label>
+                                    <input type="text" style="border-radius:12px;width: 12cm;" class="form-control" id="validationCustom02" name="customer_id" value="{{ rtn.supp_id }}" required style="background-color: lightgray;color: black;">
+                                        <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Supplier Name</label>
+                                    <input type="text" style="border-radius:12px;width: 11.5cm;" class="form-control" id="validationCustom02" name="customer_name" value="{{ rtn.supp_name }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                            </div><br>
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered table-hover" id="tab_logic">
+                                        <thead>
+                                        <tr>
+                                            <th style="border-radius:12px;width: 1cm;" class="text-center"></th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Item ID </th>
+                                            <th style="border-radius:12px;width: 4cm;" class="text-center">Item Details</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Price-1 </th>
+                                            <th style="border-radius:12px;width: 3cm;" class="text-center"> Quantity </th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Price-2 </th>
+                                            <th style="border-radius:12px;width: 3cm;" class="text-center"> Quantity </th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> Amount </th>
+                                            <th style="border-radius:12px;width: 4cm;" class="text-center"> Sales Executive </th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center"> JOB </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr id='addr0'>
+                                            <td></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="item_id1" value="{{ rtn.item_id1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="item_details1" value="{{ rtn.item_details1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price1_1" value="{{ rtn.price1_1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity1" value="{{ rtn.quantity1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price2_1" value="{{ rtn.price2_1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity3" value="{{ rtn.quantity3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="amount1" value="{{ rtn.amount1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="sales_ex1" value="{{ rtn.sales_ex1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="job1" value="{{ rtn.job1 }}" class="form-control"/></td>
+                                        </tr>
+                                        <tr id='addr0'>
+                                            <td></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="item_id2" value="{{ rtn.item_id2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="item_details2" value="{{ rtn.item_details2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price1_2" value="{{ rtn.price1_2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity2" value="{{ rtn.quantity2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="price2_2" value="{{ rtn.price2_2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="quantity4" value="{{ rtn.quantity4 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="amount2" value="{{ rtn.amount2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="sales_ex2" value="{{ rtn.sales_ex2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="job2" value="{{ rtn.job2 }}" class="form-control"/></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><br><br>
+                            <!--End-Table-->
+
+
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Labour Charge</label>
+                                    <input type="text" style="border-radius:12px;width: 8.5cm;" class="form-control" id="validationCustom02" name="labour_charge" value="{{ rtn.labour_charge }}" required style="background-color: lightgray;color: black;">
+
+
+                                    <label for="validationCustom02">Other Charge</label>
+                                    <input type="text" style="border-radius:12px;width: 8.5cm;" class="form-control" id="validationCustom02" name="other_charge" value="{{ rtn.other_charge }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="total1" value="{{ rtn.total1 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total2" value="{{ rtn.total2 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Discount</label>
+                                    <input type="text" style="border-radius:12px;width: 20.7cm;" class="form-control" id="validationCustom02" name="discount" value="{{ rtn.discount }}" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="total3" value="{{ rtn.total3 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total4" value="{{ rtn.total4 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Tax</label>
+                                    <input type="text" style="border-radius:12px;width: 21.3cm;" class="form-control" id="validationCustom02" name="tax" value="{{ rtn.tax }}" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 5.8cm;" class="form-control" id="validationCustom02" name="total5" value="{{ rtn.total5 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total6" value="{{ rtn.total6 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                            </div><br>
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="text-block1">
+                                <div class="form-row">
+                                    <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

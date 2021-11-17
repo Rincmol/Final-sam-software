@@ -1,0 +1,42 @@
+
+ 
+    <!-- {% if category.name|lower == "sundry debtors" %}
+        {% for debit in sundry_debtors %}
+        <tr>
+            <td colspan="3">
+                <dl style="padding-left: 20px;"><label>{{ debit.customer_name }}</label></dl>
+            </td>
+        </tr>
+        {% endfor %}
+    {% elif category.name|lower == "sundry creditors" %}
+        {% for credit in sundry_creditors %}
+        <tr>
+            <td colspan="3">
+                <dl style="padding-left: 20px;"><label>{{ credit.customer_name }}</label></dl>
+            </td>
+        </tr>
+        {% endfor %}
+        {% elif category.name|lower == "closing_stock" %}
+        {% for stock in closing_stock %}
+        <tr>
+            <td colspan="3">
+                <dl style="padding-left: 20px;"><label>{{ stock.item_name }}</label></dl>
+            </td>
+        </tr>
+        
+    {% endif %} -->
+    {% endfor %}
+    {% if re.children %}
+        {% include "Sam/child_category.html" with groups=groups.children%}
+        {% for res in result%}
+ <tr>
+    <td>{{res.id}}</td>
+   <td>{{res.ledger_name}}</td>
+  
+        <td>
+            <a href="asset/edit/{{re.id }}">Edit</a> |
+            <a href="asset/delete/{{ re.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endif %}
+{% endfor %}

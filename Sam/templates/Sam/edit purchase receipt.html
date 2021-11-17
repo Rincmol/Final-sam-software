@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+    .text-block1 {
+  position: absolute;
+
+  left: 10cm;
+    }
+
+</style>
+</head>
+<body>
+<div style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h1 style="text-align: center">Receipt</h1></center>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+					<!--end breadcrumb-->
+                    <div class="container">
+                    <form action="updatepreceipt/{{ rpt.id }}" method="POST"  class="needs-validation" novalidate>
+                                {% csrf_token %}
+                        <div class="row" style="padding-top: 5px;">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Receipt Number</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="receipt_number" value="{{ rpt.receipt_number }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Date</label>
+                                    <input type="text" style="border-radius:12px;width: 8.4cm;" class="form-control" id="validationCustom02" name="date" value="{{ rpt.date }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Internal Ref. No.</label>
+                                    <input type="text" style="border-radius:12px;width: 8cm;" class="form-control" id="validationCustom02" name="internal_ref_no" value="{{ rpt.internal_ref_no }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Due On</label>
+                                    <input type="text" style="border-radius:12px;width: 7cm;" class="form-control" id="validationCustom02" name="due_on" value="{{ rpt.due_on }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">User ID</label>
+                                    <input type="text" style="border-radius:12px;width: 9.5cm;" class="form-control" id="validationCustom02" name="user_id" value="{{ rpt.user_id }}" required style="background-color: lightgray;color: black;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Credit Limit Amount</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="credit_limit_amt" value="{{ rpt.credit_limit_amt }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Supplier ID</label>
+                                    <input type="text" style="border-radius:12px;width: 12cm;" class="form-control" id="validationCustom02" name="supp_id" value="{{ rpt.supp_id }}" required style="background-color: lightgray;color: black;">
+                                        <br><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                    <label for="validationCustom02">Supplier Name</label>
+                                    <input type="text" style="border-radius:12px;width: 11.5cm;" class="form-control" id="validationCustom02" name="supp_name" value="{{ rpt.supp_name }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                            </div><br>
+                            <!--Table-->
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-bordered table-hover" id="tab_logic">
+                                        <thead>
+                                        <tr>
+                                            <th style="border-radius:12px;width: 1cm;" class="text-center">SI No</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Invoice Number</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Invoice Date</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Due Date</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Invoice Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Received Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Outstanding</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Discount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Balane Amount</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Tick Space</th>
+                                            <th style="border-radius:12px;width: 2cm;" class="text-center">Partial</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr id='addr0'>
+                                            <td>1.</td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="invoice_no1" value="{{ rpt.invoice_no1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="invoice_date1" value="{{ rpt.invoice_date1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="duedate1" value="{{ rpt.duedate1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="invoice_amt1" value="{{ rpt.invoice_amt1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="received_amt1" value="{{ rpt.received_amt1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="outstanding1" value="{{ rpt.outstanding1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="discount1" value="{{ rpt.discount1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="balance_amt1" value="{{ rpt.balance_amt1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="tick_space1" value="{{ rpt.tick_space1 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="partial1" value="{{ rpt.partial1 }}" class="form-control"/></td>
+                                        </tr>
+                                        <tr id='addr1'>
+                                            <td>2.</td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="invoice_no2" value="{{ rpt.invoice_no2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="invoice_date2" value="{{ rpt.invoice_date2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="duedate2" value="{{ rpt.duedate2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="invoice_amt2" value="{{ rpt.invoice_amt2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="received_amt2" value="{{ rpt.received_amt2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="outstanding2" value="{{ rpt.outstanding2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="discount2" value="{{ rpt.discount2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="balance_amt2" value="{{ rpt.balance_amt2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="tick_space2" value="{{ rpt.tick_space2 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="partial2" value="{{ rpt.partial2 }}" class="form-control"/></td>
+                                        </tr>
+                                        <tr id='addr2'>
+                                            <td>3.</td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="invoice_no3" value="{{ rpt.invoice_no3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="invoice_date3" value="{{ rpt.invoice_date3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="duedate3" value="{{ rpt.duedate3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="invoice_amt3" value="{{ rpt.invoice_amt3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="received_amt3" value="{{ rpt.received_amt3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 3cm;" name="outstanding3" value="{{ rpt.outstanding3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="discount3" value="{{ rpt.discount3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 4cm;" name="balance_amt3" value="{{ rpt.balance_amt3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="tick_space3" value="{{ rpt.tick_space3 }}" class="form-control"/></td>
+                                            <td><input type="text" style="border-radius:12px;width: 2cm;" name="partial3" value="{{ rpt.partial3 }}" class="form-control"/></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><br><br>
+                            <!--End-Table-->
+
+
+                            <div class="row">
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="total1" value="{{ rpt.total1 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total2" value="{{ rpt.total2 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">On Account</label>
+                                    <input type="text" style="border-radius:12px;width: 20.7cm;" class="form-control" id="validationCustom02" name="on_account" value="{{ rpt.on_account }}" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 6cm;" class="form-control" id="validationCustom02" name="total3" value="{{ rpt.total3 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total4" value="{{ rpt.total4 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Discount</label>
+                                    <input type="text" style="border-radius:12px;width: 21.3cm;" class="form-control" id="validationCustom02" name="discount" value="{{ rpt.discount }}" required style="background-color: lightgray;color: black;">
+
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label for="validationCustom02">Total</label>
+                                    <input type="text" style="border-radius:12px;width: 5.8cm;" class="form-control" id="validationCustom02" name="total5" value="{{ rpt.total5 }}" required style="background-color: lightgray;color: black;">
+                                    <input type="text" style="border-radius:12px;width: 15cm;" class="form-control" id="validationCustom02" name="total6" value="{{ rpt.total6 }}" required style="background-color: lightgray;color: black;">
+                                    </div>
+                                </div><br>
+                            </div><br>
+
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="text-block1">
+                                <div class="form-row">
+                                    <button class="btn btn-primary" type="submit" style="width: 10cm;border-radius:12px;background-color: darkgrey">Submit form</button>
+                                </div>
+                            </div>
+                        </div><br><br>
+
+                        <script>
+                        function myFunction() {
+                        var x = document.getElementById("myFile");
+                        x.disabled = true;
+                        }
+                        </script>
+                    </form>
+                    </div>
+
+
+        </div>
+
+</div>
+
+
+
+</body>
+</html>

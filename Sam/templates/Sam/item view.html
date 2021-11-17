@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+
+    <title>Title</title>
+<style>
+    .a{
+        font-family: "Poppins", sans-serif;
+    }
+</style>
+</head>
+<body>
+<body style="background-color: lightgray">
+
+        <div class="page-content">
+					<!--breadcrumb-->
+					<div class="card radius-15">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <center><h2 style="text-align: center">View Deatails</h2></center>
+                            </div>
+                            <table border="1" class="table table-bordered" input align="center">
+
+                                <thead class="alert-warning">
+                                <tr>
+                                    <th>Item name</th>
+                                    <th>Item Drecription</th>
+                                    <th>Item Item Barcode</th>
+                                    <th>Item Item Category</th>
+                                    <th>Item Opening Balance</th>
+                                    <th>Item Buying Price</th>
+                                    <th>Item Selling Price</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for itm1 in itmview %}
+                                    <tr>
+                                        <td>{{ itm1.item_name }}</td>
+                                        <td>{{ itm1.item_desc }}</td>
+                                        <td>{{ itm1.item_barcode }}</td>
+                                        <td>{{ itm1.item_category }}</td>
+                                        <td>{{ itm1.open_balance }}</td>
+                                        <td>{{ itm1.buying_price }}</td>
+                                        <td>{{ itm1.sell_price }}</td>
+                                        <td><center><a class="btn btn-sm btn-warning" href="edititem/{{ itm1.id }}"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a class="btn btn-sm btn-danger" href="deleteitem/{{ itm1.id }}"><span class="glyphicon glyphicon-trash"></span>Delete</a> </center></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+				</div>
+
+
+
+
+</body>
+</html>
