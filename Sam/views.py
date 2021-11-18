@@ -523,13 +523,13 @@ def gocustrecpt(request):
 def custrecptcreate(request):
 
         df = request.POST.get('report_date')
-        invon = request.POST.get('receipt_no')
+        recn = request.POST.get('receipt_no')
         cid = request.POST.get('customer_id')
         cnm = request.POST.get('customer_name')
        
 
         demop = Cash.objects.filter(date=df)  
-        demoac = demop.filter(customer_name=cnm,customer_id=cid,invoice_number=invon)
+        demoac = demop.filter(customer_name=cnm,customer_id=cid)
         context = {'demoac': demoac}
         return render(request,'Sam/Customer ReceiptHistory.html', context)
 
@@ -539,20 +539,30 @@ def custrecptcreate(request):
 def gocustinvorecpt(request):
     return render(request,'Sam/CustomerInvoice ReceiptsReg.html')
 def custinvorecptcreate(request):
-    cus1 = Customer_Invoice_Receipt(date=request.POST['date'], report_date=request.POST['report_date'],)
-    cus1.save()
-    return redirect('/')
+
+    
+        df = request.POST.get('from_date')
+        dt = request.POST.get('to_date')
+        demoac =  Cash.objects.filter(date__range=[df,dt]) 
+        context = {'demoac': demoac}
+        return render(request,'Sam/CustomerInvoice ReceiptsReg.html', context)
+
+
+
+    # cus1 = Customer_Invoice_Receipt(date=request.POST['date'], report_date=request.POST['report_date'],)
+    # cus1.save()
+    # return redirect('/')
 def gocustrmasterdata(request):
     return render(request,'Sam/Customer Masterdata.html')
 def custrmasterdatacreate(request):
     # ldgr2 = Customer_Masterdata(date=request.POST['date'],report_date=request.POST['report_date'],)
     # ldgr2.save()
 
-    dt = request.POST.get('date')
-    report1 = Customer.objects.all()
-    report = report1.filter(created_at = dt)
-    context = {'report': report}
-    return render(request,'Sam/Customer Masterdata.html', context)
+        df = request.POST.get('from_date')
+        dt = request.POST.get('to_date')
+        demoac =  Customer.objects.filter(created_at__range=[df,dt]) 
+        context = {'demoac': demoac}
+        return render(request,'Sam/Customer Masterdata.html', context)
     
     #   if request.method == 'POST':
     #     dat = request.GET.get('date')

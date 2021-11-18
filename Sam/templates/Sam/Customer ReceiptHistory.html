@@ -16,6 +16,15 @@
   left: 10cm;
     }
 
+    /* Automatic Serial Number Row */
+    .css-serial {
+ counter-reset: serial-number; /* Set the serial number counter to 0 */
+}
+.css-serial td:first-child:before {
+ counter-increment: serial-number; /* Increment the serial number counter */
+ content: counter(serial-number); /* Display the counter */
+}
+
 </style>
 </head>
 <body>
@@ -33,7 +42,7 @@
                     </div>
 					<!--end breadcrumb-->
                     <div class="container">
-                    <form action="ldgrstmtcreate" method="POST"  class="needs-validation" novalidate>
+                    <form action="custrecptcreate" method="POST"  class="needs-validation" novalidate>
                                 {% csrf_token %}
                         <div class="row">
 
@@ -50,7 +59,7 @@
                                     <div class="col">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <label for="validationCustom02">  Report Date </label>
-                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="report_date" required style="background-color: lightgray;color: black;">
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="report_date" required style="background-color: lightgray;color: black;">
 
                                     </div>
                                 </div><br>
@@ -84,7 +93,7 @@
                             <!--Table-->
                             <div class="row">
                                 <div class="col">
-                                    <table class="table table-bordered">
+                                    <table border="1"  class="table table-bordered">
                                         <thead>
                                             <tr>
                                               <th>Sl.no</th>
@@ -101,7 +110,7 @@
                                           <tbody>
                                             {% for i  in demoac %}
                                             <tr>
-                                                <td>&nbsp;</td> 
+                                                <td>&nbsp;</td>
                                                 <td><input style="border-radius:12px;" value="{{ i.date }}" class="form-control" readonly/></td>
                                                 <td><input style="border-radius:12px;" value="{{ i.internal_ref_no }}" class="form-control" readonly/></td>
                                                 <td></td>

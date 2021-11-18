@@ -16,6 +16,17 @@
   left: 10cm;
     }
 
+  
+    /* Automatic Serial Number Row */
+.css-serial {
+ counter-reset: serial-number; /* Set the serial number counter to 0 */
+}
+.css-serial td:first-child:before {
+ counter-increment: serial-number; /* Increment the serial number counter */
+ content: counter(serial-number); /* Display the counter */
+}
+
+
 </style>
 </head>
 <body>
@@ -33,7 +44,7 @@
                     </div>
 					<!--end breadcrumb-->
                     <div class="container">
-                    <form action="ldgrstmtcreate" method="POST"  class="needs-validation" novalidate>
+                    <form action="custinvorecptcreate" method="POST"  class="needs-validation" novalidate>
                                 {% csrf_token %}
                         <div class="row">
 
@@ -41,7 +52,7 @@
                                     <div class="col">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <label for="validationCustom02">Date</label>
-                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="date" required style="background-color: lightgray;color: black;">
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="from_date" required style="background-color: lightgray;color: black;">
 
                                     </div>
                                 </div><br>
@@ -50,7 +61,7 @@
                                     <div class="col">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <label for="validationCustom02">Report Date  </label>
-                                    <input type="text" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="report_date" required style="background-color: lightgray;color: black;">
+                                    <input type="date" style="border-radius:12px;width: 10cm;" class="form-control" id="validationCustom02" name="to_date" required style="background-color: lightgray;color: black;">
 
                                     </div>
                                 </div><br>
@@ -68,7 +79,7 @@
                             <!--Table-->
                             <div class="row">
                                 <div class="col">
-                                    <table class="table table-bordered">
+                                    <table border="1" class="css-serial"  class="table table-bordered">
             <thead>
               <tr>
               <th>Sl.no</th>
@@ -84,130 +95,19 @@
               </tr>
             </thead>
             <tbody>
+              {% for i  in demoac %}
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-
-
-
-
+              <td>&nbsp;</td>
+              <td></td>
+               <td>{{ i.date }}</td>
+               <td>{{ i.internal_ref_no }}</td>
+              <td>{{ i.customer_name }}</td>
+               <td></td>
+               <td>{{ i.total }}</td>
+               <td>{{ i.sales_ex1 }}</td>
+               <td>{{ i.user_id }}</td>
+             </tr>
+             {% endfor %}  
 
             </tbody>
           </table>
