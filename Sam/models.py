@@ -194,14 +194,14 @@ class Cash(models.Model):
     total6 = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
     tax = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 class Credit(models.Model):
     invoice_number = models.TextField(max_length=100)
     date = models.DateField(max_length=100)
     internal_ref_no = models.TextField(max_length=100)
-    due_on = models.TextField(max_length=100)
+    due_on = models.DateField()
     user_id = models.TextField(max_length=100)
     credit_limit_amt = models.TextField(max_length=100)
     account = models.TextField(max_length=100)
@@ -235,12 +235,12 @@ class Credit(models.Model):
     total6 = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
     tax = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 class Sales_Return(models.Model):
     invoice_number = models.TextField(max_length=100)
-    date = models.CharField(max_length=100)
+    date = models.DateField()
     internal_ref_no = models.TextField(max_length=100)
     user_id = models.TextField(max_length=100)
     customer_id = models.TextField(max_length=100)
@@ -273,15 +273,15 @@ class Sales_Return(models.Model):
     total6 = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
     tax = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 
 class Receipt(models.Model):
     receipt_number = models.TextField(max_length=100)
-    date = models.CharField(max_length=100)
+    date = models.DateField()
     internal_ref_no = models.TextField(max_length=100)
-    due_on = models.TextField(max_length=100)
+    due_on = models.DateField()
     credit_limit_amt = models.TextField(max_length=100)
     user_id = models.TextField(max_length=100)
     customer_id = models.TextField(max_length=100)
@@ -327,7 +327,7 @@ class Receipt(models.Model):
     total6 = models.TextField(max_length=100)
     on_account = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 class DemoPCash(models.Model):
@@ -340,7 +340,7 @@ class DemoPCash(models.Model):
 
 class PCash(models.Model):
     invoice_number = models.TextField(max_length=100)
-    date = models.CharField(max_length=100)
+    date = models.DateField()
     internal_ref_no = models.TextField(max_length=100)
     cash = models.TextField(max_length=100)
     user_id = models.TextField(max_length=100)
@@ -375,14 +375,14 @@ class PCash(models.Model):
     total6 = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
     tax = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 class PCredit(models.Model):
     invoice_number = models.TextField(max_length=100)
     date = models.DateField(max_length=100)
     internal_ref_no = models.TextField(max_length=100)
-    due_on = models.TextField(max_length=100)
+    due_on = models.DateField()
     user_id = models.TextField(max_length=100)
     credit_limit_amt = models.TextField(max_length=100)
     account = models.TextField(max_length=100)
@@ -416,16 +416,16 @@ class PCredit(models.Model):
     total6 = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
     tax = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 
 class PRSales_Return(models.Model):
     invoice_number = models.TextField(max_length=100)
-    date = models.CharField(max_length=100)
+    date = models.DateField()
     internal_ref_no = models.TextField(max_length=100)
     user_id = models.TextField(max_length=100)
-    due_on = models.TextField(max_length=100)
+    due_on = models.DateField()
     credit_limit_amt = models.TextField(max_length=100)
     supp_id = models.TextField(max_length=100)
     supp_name = models.TextField(max_length=100)
@@ -457,14 +457,14 @@ class PRSales_Return(models.Model):
     total6 = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
     tax = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
 
 class PReceipt(models.Model):
     receipt_number = models.TextField(max_length=100)
-    date = models.CharField(max_length=100)
+    date = models.DateField()
     internal_ref_no = models.TextField(max_length=100)
-    due_on = models.TextField(max_length=100)
+    due_on = models.DateField()
     credit_limit_amt = models.TextField(max_length=100)
     user_id = models.TextField(max_length=100)
     supp_id = models.TextField(max_length=100)
@@ -510,7 +510,7 @@ class PReceipt(models.Model):
     total6 = models.TextField(max_length=100)
     on_account = models.TextField(max_length=100)
     discount = models.TextField(max_length=100)
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at = models.DateField(null=True)
     
 # class Ledger_Statement(models.Model):
@@ -671,7 +671,7 @@ class Category(models.Model):
         return self.category_name
 
 class Ledger_Statement(models.Model):
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     to_date=models.DateField(null=True)
     
     ledger_name = models.TextField(max_length=100)
@@ -698,7 +698,7 @@ class ChildCategory(models.Model):
 from django.db import IntegrityError
 
 class Ledger(models.Model):
-    created_at = models.DateField(default=datetime.datetime.now,editable=False)
+    created_at = models.DateField(default=datetime.date.today,editable=False)
     updated_at=models.DateField(null=True)
     ledger_name    =    models.CharField(max_length=100)
     group    =    models.ForeignKey(
@@ -728,7 +728,7 @@ class Group(models.Model):
 
 
 class Trial_Balance(models.Model):
-    date = models.TextField(max_length=100)
+    date = models.DateField()
     reportdate = models.TextField(max_length=100)
     ledger_id=models.IntegerField()
     ledger_name=models.TextField(max_length=100)
